@@ -18,6 +18,12 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: save secret into .env
+        env:
+          ENV_CONTENT: ${{ secrets.X_SERVICE_DEV }}
+        run: |
+          echo "$ENV_CONTENT"
+
       - name: build and test
         run: |
           mvn clean install
