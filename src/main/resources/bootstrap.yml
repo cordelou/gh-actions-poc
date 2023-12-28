@@ -1,0 +1,2 @@
+# import env variables from file for local use
+spring.config.import: optional:.env[.properties]

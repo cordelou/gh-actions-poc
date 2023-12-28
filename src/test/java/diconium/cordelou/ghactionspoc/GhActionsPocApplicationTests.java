@@ -3,7 +3,7 @@ package diconium.cordelou.ghactionspoc;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = FakeConfiguration.class)
 class GhActionsPocApplicationTests {
 
   @Test
