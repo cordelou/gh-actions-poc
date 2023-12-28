@@ -22,6 +22,9 @@ jobs:
         env:
           ENV_CONTENT: ${{ secrets.X_SERVICE_DEV }}
         run: |
+          SECRET_NAME=$(yq '.x_service' .github/secrets-configuration.yaml)
+          echo $SECRET_NAME
+          
           echo "$ENV_CONTENT" > .env
 
       - name: build and test
