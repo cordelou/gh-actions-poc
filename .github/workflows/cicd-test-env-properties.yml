@@ -22,7 +22,7 @@ jobs:
         env:
           ENV_CONTENT: ${{ secrets.X_SERVICE_DEV }}
         run: |
-          echo "$ENV_CONTENT"
+          echo "$ENV_CONTENT" > .env
 
       - name: build and test
         run: |
