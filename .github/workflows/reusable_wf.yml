@@ -22,8 +22,7 @@ jobs:
 
       - name: save secret into .env
         env:
-          CONTENT: ${{ secrets[$inputs.blob] }}
-        # lan
+          CONTENT: ${{ secrets[input.blob] }}
         run: |
           touch .env
           echo "$CONTENT" >> .env
