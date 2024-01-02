@@ -25,7 +25,7 @@ jobs:
           CONTENT: ${{ secrets[inputs.blob] }}
         run: |
           touch .env
-          echo "CONTENT" >> .env
+          echo "$CONTENT" >> .env
 
       - name: build and test
         run: |
