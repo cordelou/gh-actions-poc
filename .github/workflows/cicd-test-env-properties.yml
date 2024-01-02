@@ -13,24 +13,12 @@ jobs:
       - name: blob
         id: blob
         run: |
-          TEST="foo.bar.prop=aaa"
+          TEST="X_SERVICE_DEV"
           echo "content=$TEST" >> $GITHUB_OUTPUT
-
-  test2:
-    runs-on: ubuntu-latest
-    needs:
-      - first
-    steps:
-
-      - name: test
-        env:
-          TEST: ${{ needs.first.outputs.blob }}
-        run: |
-          echo $TEST
 
   call-reusable-testing-cicd:
     needs:
       - first
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
-    secrets:
+    with:
       blob: ${{ needs.first.outputs.blob }}

@@ -1,8 +1,9 @@
 on:
   workflow_call:
-    secrets:
+    inputs:
       blob:
         required: true
+        type: string
 
 jobs:
   test:
