@@ -18,6 +18,18 @@ jobs:
           TEST="foo.bar.prop=aaa"
           echo "content=$TEST" >> $GITHUB_OUTPUT
 
+  test2:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+    steps:
+
+      - name: test
+        env:
+          TEST: ${{ needs.test.outputs.blob }}
+        run: |
+          echo $TEST
+
   call-reusable-testing-cicd:
     needs:
       - test
