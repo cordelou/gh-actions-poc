@@ -23,9 +23,11 @@ jobs:
       - name: save secret into .env
         env:
           CONTENT: ${{ secrets[inputs.blob] }}
+        # lan
         run: |
           touch .env
           echo "$CONTENT" >> .env
+          cat .env
 
       - name: build and test
         run: |
