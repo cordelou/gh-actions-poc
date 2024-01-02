@@ -1,6 +1,6 @@
 on:
   workflow_call:
-    secret:
+    secrets:
       blob:
         required: true
 
