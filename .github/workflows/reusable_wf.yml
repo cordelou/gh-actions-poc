@@ -22,7 +22,7 @@ jobs:
 
       - name: save secret into .env
         env:
-          CONTENT: ${{ secrets[input.blob] }}
+          CONTENT: ${{ secrets[github.event.inputs.blob] }}
         run: |
           touch .env
           echo "$CONTENT" >> .env
