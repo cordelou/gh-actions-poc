@@ -19,7 +19,7 @@ jobs:
         env:
           BLOB: ${{ secrets.X_SERVICE_DEV }}
         run: |
-          echo "content=BLOB" >> $GITHUB_OUTPUT
+          echo "content=$BLOB" >> $GITHUB_OUTPUT
 
   call-reusable-testing-cicd:
     needs: test
