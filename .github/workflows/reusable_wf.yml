@@ -8,9 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      SECRET_BLOB: ${{ github.event.inputs.blob }}
-
     steps:
 
       - uses: actions/checkout@v3
@@ -24,9 +21,11 @@ jobs:
           java-version: 17
 
       - name: save secret into .env
+        env:
+          CONTENT: ${{ secrets[github.event.inputs.blob] }}
         run: |
           touch .env
-          echo "SECRET_BLOB=${SECRET_BLOB}" >> .env
+          echo "$CONTENT" >> .env
           cat .env
 
       - name: build and test
