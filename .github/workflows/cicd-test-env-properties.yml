@@ -8,25 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - name: Setup JAVA Environment
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 17
-
-      - name: save secret into .env
-        env:
-          ENV_CONTENT: ${{ secrets.X_SERVICE_DEV }}
+      - name: test
         run: |
-          SECRET_NAME=$(yq '.x_service' .github/secrets-configuration.yaml)
-          echo $SECRET_NAME
-          
-          echo "$ENV_CONTENT" > .env
+          echo "hello"
 
-      - name: build and test
-        run: |
-          mvn clean install
+  call-reusable-testing-cicd:
+    uses: vwdfive/oneshop-ce/.github/workflows/reusable-testing-cicd.yml@feature/OS2TEAM3-48-create-resusable-workflow
+    with:
+      blob: ${{ secrets.X_SERVICE_DEV }}
