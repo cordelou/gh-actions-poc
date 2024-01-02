@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  test:
+  first:
     runs-on: ubuntu-latest
     outputs:
       blob: ${{ steps.blob.outputs.content }}
@@ -21,18 +21,18 @@ jobs:
   test2:
     runs-on: ubuntu-latest
     needs:
-      - test
+      - first
     steps:
 
       - name: test
         env:
-          TEST: ${{ needs.test.outputs.blob }}
+          TEST: ${{ needs.first.outputs.blob }}
         run: |
           echo $TEST
 
   call-reusable-testing-cicd:
     needs:
-      - test
+      - first
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     secrets:
-      blob: ${{ needs.test.outputs.blob }}
+      blob: ${{ needs.first.outputs.blob }}
