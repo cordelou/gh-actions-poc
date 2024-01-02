@@ -6,13 +6,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      blob: ${{ steps.blob.outputs.content }}
     steps:
 
       - name: test
         run: |
           echo "hello"
 
+      - name: blob
+        id: blob
+        env:
+          BLOB: ${{ secrets.X_SERVICE_DEV }}
+        run: |
+          echo "content=BLOB" >> $GITHUB_OUTPUT
+
   call-reusable-testing-cicd:
+    needs: test
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     with:
-      blob: ${{ secrets.X_SERVICE_DEV }}
+      blob: ${{ needs.test.outputs.blob }}
