@@ -21,4 +21,4 @@ jobs:
     needs: test
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     secrets:
-      blob: ${{ secrets.X_SERVICE_DEV }}
+      blob: 'foo.bar.prop=aaa'
