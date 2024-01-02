@@ -12,8 +12,6 @@ jobs:
 
       - name: blob
         id: blob
-        env:
-          BLOB: ${{ secrets.X_SERVICE_DEV }}
         run: |
           TEST="foo.bar.prop=aaa"
           echo "content=$TEST" >> $GITHUB_OUTPUT
