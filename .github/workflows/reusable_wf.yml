@@ -1,10 +1,8 @@
 on:
   workflow_call:
-    inputs:
-
+    secret:
       blob:
         required: true
-        type: string
 
 jobs:
   test:
@@ -23,7 +21,7 @@ jobs:
 
       - name: save secret into .env
         env:
-          ENV_CONTENT: ${{ inputs.blob }}
+          ENV_CONTENT: ${{ secrets.blob }}
         run: |
           echo "$ENV_CONTENT" > .env
 
