@@ -22,7 +22,7 @@ jobs:
 
       - name: save secret into .env
         env:
-          CONTENT: ${{ secrets[inputs.blob] }}
+          CONTENT: ${{ secrets[$inputs.blob] }}
         # lan
         run: |
           touch .env
