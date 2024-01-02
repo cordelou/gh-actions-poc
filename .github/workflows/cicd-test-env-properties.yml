@@ -13,6 +13,6 @@ jobs:
           echo "hello"
 
   call-reusable-testing-cicd:
-    uses: gh-actions-poc/.github/workflows/reusable_wf.yml@main
+    uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     with:
       blob: ${{ secrets.X_SERVICE_DEV }}
