@@ -22,9 +22,10 @@ jobs:
 
       - name: save secret into .env
         env:
-          ENV_CONTENT: ${{ secrets.blob }}
+          CONTENT: ${{ secrets[inputs.blob] }}
         run: |
-          echo "$ENV_CONTENT" > .env
+          touch .env
+          echo "CONTENT" >> .env
 
       - name: build and test
         run: |
