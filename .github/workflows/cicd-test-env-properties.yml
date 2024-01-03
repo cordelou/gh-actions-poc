@@ -31,6 +31,5 @@ jobs:
     needs:
       - first
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
-    with:
+    secrets:
       blob: ${{ secrets[env.secret_name] }}
-    secrets: inherit
