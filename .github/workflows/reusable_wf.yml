@@ -35,10 +35,12 @@ jobs:
             
             echo "SECRET_NAME=$NAME" >> $GITHUB_ENV
           
-            SECRET=${{ secrets[env.SECRET_NAME] }}
-            echo $SECRET
-            echo $SECRET >> .env
+            # SECRET=${{ secrets[env.SECRET_NAME] }}
+            # echo $SECRET
+            # echo $SECRET >> .env
+          
+            echo ${{ env.SECRET_NAME }}
             
           done
           
-          cat .env
+          # cat .env
