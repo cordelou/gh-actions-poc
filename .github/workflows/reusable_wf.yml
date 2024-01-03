@@ -23,25 +23,9 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: save secret into .env
-        # language=bash
+      - name: test env
         run: |
-          
-          IFS=','
-          read -ra NAMES_ARRAY <<< "$NAMES"
-            
-          touch .env
-          for NAME in "${NAMES_ARRAY[@]}"; do
-            
-            echo "SECRET_NAME=$NAME" >> $GITHUB_ENV
-            echo $NAME
-          
-            # SECRET=${{ secrets[env.SECRET_NAME] }}
-            # echo $SECRET
-            # echo $SECRET >> .env
-          
-            echo ${{ env.SECRET_NAME }}
-            
-          done
-          
-          # cat .env
+          NAME="name"
+          export NAME
+          echo $NAME
+          echo ${{ env.NAME }}
