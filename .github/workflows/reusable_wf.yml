@@ -5,6 +5,9 @@ on:
         required: true
         type: string
 
+env:
+  NAME: ${{ inputs.blob }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -21,9 +24,10 @@ jobs:
           java-version: 17
 
       - name: save secret into .env
-        env:
-          CONTENT: ${{ secrets[github.event.inputs.blob] }}
         run: |
+          
+          CONTENT=${{ secrets[format('{0}', $NAME)] }}
+          
           touch .env
           echo "$CONTENT" >> .env
           cat .env
