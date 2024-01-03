@@ -27,17 +27,6 @@ jobs:
         # language=bash
         run: |
           
-          ALL_SECRETS=${{ secrets }}
-          
-          for SECRET in $ALL_SECRETS; do
-            echo "Secret: $SECRET"
-            # You can perform actions on each secret here
-          done
-          
-          touch .env
-          echo "$CONTENT" >> .env
-          cat .env
-
-      - name: build and test
-        run: |
-          mvn clean install
+          NAME="X_SERVICE_DEV"
+          SECRET=${{ secrets[env,NAME] }}
+          echo $SECRET
