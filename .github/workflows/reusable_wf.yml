@@ -23,20 +23,15 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Fetch Secret
+      - name: save secret into .env
+        # language=bash
         run: |
-            # Get the input string from the workflow
-            INPUT_STRING="${{ inputs.blob }}"
-            
-            # Fetch the secret using the input string as the secret name
-            SECRET_VALUE=$(echo "${{ secrets[INPUT_STRING] }}")
-            
-            # Print the secret value (for demonstration purposes)
-            echo "Secret Value: $SECRET_VALUE"
           
-            touch .env
-            echo "$CONTENT" >> .env
-            cat .env
+          CONTENT=$(echo "${{ secrets[env.NAME] }}")
+          
+          touch .env
+          echo "$CONTENT" >> .env
+          cat .env
 
       - name: build and test
         run: |
