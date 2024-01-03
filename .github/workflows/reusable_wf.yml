@@ -28,4 +28,4 @@ jobs:
           NAME="name"
           export NAME
           echo $NAME
-          echo ${{ env.NAME }}
+          echo ${{ vars.NAME }}
