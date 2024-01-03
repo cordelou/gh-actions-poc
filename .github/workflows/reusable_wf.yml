@@ -3,7 +3,6 @@ on:
     secrets:
       blob:
         required: true
-        type: string
 
 env:
   NAMES: ${{ inputs.blob }}
