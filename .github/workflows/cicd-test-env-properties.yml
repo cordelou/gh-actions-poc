@@ -23,16 +23,17 @@ jobs:
             secret_name = "Y_SERVICE_DEV"
           fi
           
-          echo "secret_name=$secret_name" >> $GITHUB_ENV
+          # echo "secret_name=$secret_name" >> $GITHUB_ENV
+          echo "action_state=yellow" >> "$GITHUB_ENV"
 
       - name: test
         # language=bash
         run: |
-          echo ${{ env.secret_name }}
+          echo ${{ env.action_state }}
 
   call-reusable-testing-cicd:
     needs:
       - first
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     secrets:
-      blob: ${{ secrets[secret_name] }}
+      blob: 'ola'
