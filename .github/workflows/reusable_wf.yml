@@ -23,9 +23,13 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: test env
+      - name: Extract secrets and update .env
         run: |
-          NAME="name"
-          export NAME
-          echo $NAME
-          echo ${{ vars.NAME }}
+            NAMES=${{ github.event.workflow_run.payload.inputs.secret_names }}
+            IFS=',' read -ra secrets_array <<< "$NAMES"
+            for secret_name in "${secrets_array[@]}"; do
+              secret_value=$(echo "${{ secrets[secret_name] }}" | sed -e 's/"/\\"/g' -e 's/\n/\\n/g')
+              echo "$secret_name=$secret_value" >> .env
+            done
+            
+            cat .env
