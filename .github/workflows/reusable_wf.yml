@@ -27,8 +27,8 @@ jobs:
         # language=bash
         run: |
           
-          SECRET_NAME="X_SERVICE_DEV"
-          CONTENT=$(echo "${{ secrets[env.SECRET_NAME] }}")
+          ALL_SECRETS=${{ secrets }}
+          echo $ALL_SECRETS
           
           touch .env
           echo "$CONTENT" >> .env
