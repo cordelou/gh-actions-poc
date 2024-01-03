@@ -21,3 +21,13 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+
+      - name: Configure Test Environment
+        # language=bash
+        run: |
+          echo ${{ secrets.blob }} >> .env
+
+      - name: Test
+        # language=bash
+        run: |
+          mvn clean install
