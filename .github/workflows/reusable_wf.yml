@@ -28,7 +28,11 @@ jobs:
         run: |
           
           ALL_SECRETS=${{ secrets }}
-          CONTENT=$ALL_SECRETS[$NAME]
+          
+          for SECRET in $ALL_SECRETS; do
+            echo "Secret: $SECRET"
+            # You can perform actions on each secret here
+          done
           
           touch .env
           echo "$CONTENT" >> .env
