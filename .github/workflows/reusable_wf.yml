@@ -26,6 +26,7 @@ jobs:
         # language=bash
         run: |
           echo ${{ secrets.blob }} > .env
+          cat .env
           
 
       - name: Test
