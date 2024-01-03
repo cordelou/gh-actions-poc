@@ -8,10 +8,11 @@ jobs:
   first:
     runs-on: ubuntu-latest
     outputs:
-      blob: ${{ steps.blob.outputs.content }}
+      blob: ${{ steps.blob.outputs.SECRET_NAME }}
     steps:
 
       - name: Get Secret Name
+        id: blob
         # language=bash
         run: |
           FAKE_INPUT="X"
