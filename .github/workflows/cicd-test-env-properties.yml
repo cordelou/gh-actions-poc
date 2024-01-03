@@ -22,3 +22,4 @@ jobs:
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     with:
       blob: ${{ needs.first.outputs.blob }}
+    secrets: inherit
