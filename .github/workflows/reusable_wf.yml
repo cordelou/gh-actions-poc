@@ -26,7 +26,7 @@ jobs:
       - name: save secret into .env
         run: |
           
-          CONTENT=${{ secrets[format('{0}', env.NAME)] }}
+          CONTENT=${{ secrets[env.NAME] }}
           
           touch .env
           echo "$CONTENT" >> .env
