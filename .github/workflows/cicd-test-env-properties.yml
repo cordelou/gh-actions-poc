@@ -13,7 +13,7 @@ jobs:
       - name: blob
         id: blob
         run: |
-          TEST="X_SERVICE_DEV"
+          TEST="X_SERVICE_D"
           echo "content=$TEST" >> $GITHUB_OUTPUT
 
   call-reusable-testing-cicd:
