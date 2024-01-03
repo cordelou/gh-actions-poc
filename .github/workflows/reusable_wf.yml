@@ -26,8 +26,10 @@ jobs:
       - name: Extract secrets and update .env
         run: |
           IFS=',' read -ra secrets_array <<< "$NAMES"
+          
           for secret_name in "${secrets_array[@]}"; do
-            secret_value=$(echo "${{ secrets["$secret_name"] }}" | sed -e 's/"/\\"/g' -e 's/\n/\\n/g')
+            export SN=$secret_name
+            secret_value=${{ secrets[env.SN] }}
             echo "$secret_value" >> .env
           done
 
