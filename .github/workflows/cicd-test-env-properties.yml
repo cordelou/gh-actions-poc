@@ -14,13 +14,13 @@ jobs:
       - name: Get Secret Name
         # language=bash
         run: |
-          fake_input="X"
+          FAKE_INPUT="X"
           
-          secret_name=""
-          if [[ "$fake_input" =~ ^(X)$ ]]; then
-            secret_name="X_SERVICE_DEV"
+          SECRET_NAME=""
+          if [[ "$FAKE_INPUT" =~ ^(X)$ ]]; then
+            SECRET_NAME="X_SERVICE_DEV"
           else
-            secret_name="Y_SERVICE_DEV"
+            SECRET_NAME="Y_SERVICE_DEV"
           fi
           
           # echo "secret_name=$secret_name" >> $GITHUB_ENV
