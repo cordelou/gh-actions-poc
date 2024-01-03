@@ -28,5 +28,5 @@ jobs:
         run: |
           
           NAME="X_SERVICE_DEV"
-          SECRET=${{ secrets[env,NAME] }}
+          SECRET=${{ secrets[env.NAME] }}
           echo $SECRET
