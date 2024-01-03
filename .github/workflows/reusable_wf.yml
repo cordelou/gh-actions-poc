@@ -6,7 +6,7 @@ on:
         type: string
 
 env:
-  NAME: ${{ inputs.blob }}
+  NAMES: ${{ inputs.blob }}
 
 jobs:
   test:
@@ -27,5 +27,12 @@ jobs:
         # language=bash
         run: |
           
-          SECRET=${{ secrets[env.NAME] }}
-          echo $SECRET
+          IFS=','
+          read -ra NAMES_ARRAY <<< "$NAMES"
+            
+          for NAME in "${NAMES_ARRAY[@]}"; do
+            echo "Current NAME: $NAME"
+          done
+          
+          # SECRET=${{ secrets[env.NAME] }}
+          # echo $SECRET
