@@ -30,9 +30,12 @@ jobs:
           IFS=','
           read -ra NAMES_ARRAY <<< "$NAMES"
             
+          touch .env
           for NAME in "${NAMES_ARRAY[@]}"; do
-            echo "Current NAME: $NAME"
+            echo $NAME >> .env
           done
+          
+          cat .env
           
           # SECRET=${{ secrets[env.NAME] }}
           # echo $SECRET
