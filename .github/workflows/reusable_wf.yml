@@ -29,7 +29,7 @@ jobs:
             INPUT_STRING="${{ inputs.blob }}"
             
             # Fetch the secret using the input string as the secret name
-            SECRET_VALUE=$(echo "${{ secrets[$INPUT_STRING] }}")
+            SECRET_VALUE=$(echo "${{ secrets[INPUT_STRING] }}")
             
             # Print the secret value (for demonstration purposes)
             echo "Secret Value: $SECRET_VALUE"
