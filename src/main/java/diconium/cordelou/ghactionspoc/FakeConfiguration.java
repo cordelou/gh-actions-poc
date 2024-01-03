@@ -10,10 +10,19 @@ public class FakeConfiguration {
   @Value("${foo.bar.prop}")
   private String fakeProperty;
 
+  @Value("${foo.bar.other.prop}")
+  private String otherFakeProperty;
+
   @Bean
   public String fakeBean() {
     System.out.println(fakeProperty);
     return fakeProperty;
+  }
+
+  @Bean
+  public String otherFakeBean() {
+    System.out.println(otherFakeProperty);
+    return otherFakeProperty;
   }
 
 }
