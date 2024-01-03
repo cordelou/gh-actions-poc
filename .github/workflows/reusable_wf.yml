@@ -25,7 +25,8 @@ jobs:
       - name: Configure Test Environment
         # language=bash
         run: |
-          echo ${{ secrets.blob }} >> .env
+          echo ${{ secrets.blob }} > .env
+          
 
       - name: Test
         # language=bash
