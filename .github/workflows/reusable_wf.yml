@@ -27,6 +27,5 @@ jobs:
         # language=bash
         run: |
           
-          NAME="X_SERVICE_DEV"
           SECRET=${{ secrets[env.NAME] }}
           echo $SECRET
