@@ -24,12 +24,12 @@ jobs:
           fi
           
           # echo "secret_name=$secret_name" >> $GITHUB_ENV
-          echo "action_state=yellow" >> "$GITHUB_ENV"
+          echo "SECRET_NAME=$SECRET_NAME" >> "$GITHUB_ENV"
 
       - name: test
         # language=bash
         run: |
-          echo ${{ env.action_state }}
+          echo ${{ env.SECRET_NAME }}
 
   call-reusable-testing-cicd:
     needs:
