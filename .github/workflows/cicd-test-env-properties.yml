@@ -4,22 +4,33 @@ on:
       - main
 
 jobs:
+
   first:
     runs-on: ubuntu-latest
     outputs:
       blob: ${{ steps.blob.outputs.content }}
     steps:
 
-      - name: blob
+      - name: Get Secret Name
         id: blob
+        # language=bash
         run: |
-          TEST="X_SERVICE_DEV,Y_SERVICE_DEV"
-          echo "content=$TEST" >> $GITHUB_OUTPUT
+          fake_input = "X"
+          
+          secret_name = ""
+          if [[ "$fake_input" =~ ^(X)$ ]]; then
+            secret_name = "X_SERVICE_DEV"
+          else
+            secret_name = "Y_SERVICE_DEV"
+          fi
+          
+          echo "secret_name=$secret_name" >> $GITHUB_ENV
+          
 
   call-reusable-testing-cicd:
     needs:
       - first
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     with:
-      blob: ${{ needs.first.outputs.blob }}
+      blob: ${{ secrets[env.secret_name] }}
     secrets: inherit

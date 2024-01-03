@@ -22,15 +22,3 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-
-      - name: Extract secrets and update .env
-        run: |
-          IFS=',' read -ra secrets_array <<< "$NAMES"
-          
-          for secret_name in "${secrets_array[@]}"; do
-            export SN=$secret_name
-            secret_value=${{ secrets[env.SN] }}
-            echo "$secret_value" >> .env
-          done
-
-          cat .env
