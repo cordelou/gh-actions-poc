@@ -34,6 +34,7 @@ jobs:
           for NAME in "${NAMES_ARRAY[@]}"; do
             
             echo "SECRET_NAME=$NAME" >> $GITHUB_ENV
+            echo $NAME
           
             # SECRET=${{ secrets[env.SECRET_NAME] }}
             # echo $SECRET
