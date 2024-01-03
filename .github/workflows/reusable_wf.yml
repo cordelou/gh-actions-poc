@@ -32,8 +32,10 @@ jobs:
             
           touch .env
           for NAME in "${NAMES_ARRAY[@]}"; do
+            
+            echo $NAME >> >> $GITHUB_ENV
           
-            SECRET=${{ secrets[$NAME] }}
+            SECRET=${{ secrets[env.NAME] }}
             echo $SECRET
             echo $SECRET >> .env
             
