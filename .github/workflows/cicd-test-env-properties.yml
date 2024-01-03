@@ -36,4 +36,4 @@ jobs:
       - first
     uses: cordelou/gh-actions-poc/.github/workflows/reusable_wf.yml@main
     secrets:
-      blob: ${{ SECRET_NAME }}
+      blob: ${{ secrets['X_SERVICE_DEV'] }}
