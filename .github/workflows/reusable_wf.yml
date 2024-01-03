@@ -33,7 +33,7 @@ jobs:
           touch .env
           for NAME in "${NAMES_ARRAY[@]}"; do
           
-            SECRET=${{ secrets[env.NAME] }}
+            SECRET=${{ secrets[$NAME] }}
             echo $SECRET
             echo $SECRET >> .env
             
