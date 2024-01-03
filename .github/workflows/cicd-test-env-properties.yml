@@ -12,7 +12,6 @@ jobs:
     steps:
 
       - name: Get Secret Name
-        id: blob
         # language=bash
         run: |
           fake_input = "X"
@@ -25,7 +24,11 @@ jobs:
           fi
           
           echo "secret_name=$secret_name" >> $GITHUB_ENV
-          
+
+      - name: test
+        # language=bash
+        run: |
+          echo ${{ env.secret_name }}
 
   call-reusable-testing-cicd:
     needs:
