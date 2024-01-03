@@ -29,6 +29,7 @@ jobs:
           for secret_name in "${secrets_array[@]}"; do
             secret_value=$(echo "${{ secrets[secret_name] }}" | sed -e 's/"/\\"/g' -e 's/\n/\\n/g')
             echo "$secret_name=$secret_value" >> .env
+            echo "export $secret_name=$secret_value" >> $GITHUB_ENV
           done
 
           cat .env  # Optional: Display the updated .env file content
