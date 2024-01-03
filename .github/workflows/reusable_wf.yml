@@ -34,6 +34,7 @@ jobs:
           for NAME in "${NAMES_ARRAY[@]}"; do
           
             SECRET=${{ secrets[env.NAME] }}
+            echo $SECRET
             echo $SECRET >> .env
             
           done
