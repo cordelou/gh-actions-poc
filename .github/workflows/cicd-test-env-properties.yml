@@ -24,7 +24,7 @@ jobs:
           fi
           
           # echo "secret_name=$secret_name" >> $GITHUB_ENV
-          echo "SECRET_NAME=$SECRET_NAME" >> "$GITHUB_ENV"
+          echo "SECRET_NAME=$SECRET_NAME" >> "$GITHUB_OUTPUT"
 
       - name: test
         # language=bash
