@@ -4,9 +4,6 @@ on:
       blob:
         required: true
 
-env:
-  NAMES: ${{ inputs.blob }}
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,8 +23,6 @@ jobs:
         # language=bash
         run: |
           echo "${{ secrets.blob }}" > .env
-          cat .env
-          
 
       - name: Test
         # language=bash
